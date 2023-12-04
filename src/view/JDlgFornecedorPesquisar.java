@@ -31,7 +31,6 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
         List lista = fornecedorDAO.listALL();
         jTable1.setModel(fornecedorControle);
         fornecedorControle.setList(lista);
-
     }
 
     public void setTelaAnterior(JDlgFornecedor1 jDlgFornecedor1) {
@@ -114,7 +113,7 @@ public class JDlgFornecedorPesquisar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
         GasFornecedor gasFornecedor = fornecedorControle.getbean(rowSel);
         jDlgFornecedor1.beanView(gasFornecedor);

@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -33,8 +33,12 @@ public class GasProduto  implements java.io.Serializable {
     }
 
 	
-   
-    public GasProduto(int gasIdproduto, GasFornecedor gasFornecedor, GasTipo gasTipo, Integer gasValor, String gasNome) {
+    public GasProduto(int gasIdproduto, GasFornecedor gasFornecedor, GasTipo gasTipo) {
+        this.gasIdproduto = gasIdproduto;
+        this.gasFornecedor = gasFornecedor;
+        this.gasTipo = gasTipo;
+    }
+    public GasProduto(int gasIdproduto, GasFornecedor gasFornecedor, GasTipo gasTipo, int gasValor, String gasNome, Set gasCompraProdutos) {
        this.gasIdproduto = gasIdproduto;
        this.gasFornecedor = gasFornecedor;
        this.gasTipo = gasTipo;
@@ -94,6 +98,20 @@ public class GasProduto  implements java.io.Serializable {
         this.gasNome = gasNome;
     }
 
+public String toString() {
+        return getGasNome();
+    }
+
+    public boolean equals(Object object) {
+        if (object instanceof GasProduto) {
+            GasProduto gasProduto = (GasProduto) object;
+            if (this.getGasIdproduto() == gasProduto.getGasIdproduto()) {
+                return true;
+            }
+        }
+        return false;
+
+    }
 
 
 

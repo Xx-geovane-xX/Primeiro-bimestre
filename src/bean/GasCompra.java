@@ -1,7 +1,8 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +10,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,34 +27,61 @@ import javax.persistence.TemporalType;
 public class GasCompra  implements java.io.Serializable {
 
 
-     private int gasIdcompra;
+     private int gasIdCompra;
+     private GasFornecedor gasFornecedor;
+     private GasTipo gasTipo;
      private Date gasDataCompra;
-     private int gasValorTotal;
+     private double gasTotal;
      private String gasFormaDePagamento;
-     private int gasNumeroDaFatura;
 
     public GasCompra() {
     }
 
 	
-    public GasCompra(int gasIdcompra, Date gasDataCompra, Integer gasValorTotal, String gasFormaDePagamento, Integer gasNumeroDaFatura) {
-       this.gasIdcompra = gasIdcompra;
+    public GasCompra(int gasIdCompra, GasFornecedor gasFornecedor, GasTipo gasTipo) {
+        this.gasIdCompra = gasIdCompra;
+        this.gasFornecedor = gasFornecedor;
+        this.gasTipo = gasTipo;
+    }
+    public GasCompra(int gasIdCompra, GasFornecedor gasFornecedor, GasTipo gasTipo, Date gasDataCompra, double gasTotal, String gasFormaDePagamento) {
+       this.gasIdCompra = gasIdCompra;
+       this.gasFornecedor = gasFornecedor;
+       this.gasTipo = gasTipo;
        this.gasDataCompra = gasDataCompra;
-       this.gasValorTotal = gasValorTotal;
+       this.gasTotal = gasTotal;
        this.gasFormaDePagamento = gasFormaDePagamento;
-       this.gasNumeroDaFatura = gasNumeroDaFatura;
     }
    
      @Id 
 
     
-    @Column(name="gas_idcompra", unique=true, nullable=false)
-    public int getGasIdcompra() {
-        return this.gasIdcompra;
+    @Column(name="gas_id_compra", unique=true, nullable=false)
+    public int getGasIdCompra() {
+        return this.gasIdCompra;
     }
     
-    public void setGasIdcompra(int gasIdcompra) {
-        this.gasIdcompra = gasIdcompra;
+    public void setGasIdCompra(int gasIdCompra) {
+        this.gasIdCompra = gasIdCompra;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="gas_fk_fornecedor", nullable=false)
+    public GasFornecedor getGasFornecedor() {
+        return this.gasFornecedor;
+    }
+    
+    public void setGasFornecedor(GasFornecedor gasFornecedor) {
+        this.gasFornecedor = gasFornecedor;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="gas_fk_tipo", nullable=false)
+    public GasTipo getGasTipo() {
+        return this.gasTipo;
+    }
+    
+    public void setGasTipo(GasTipo gasTipo) {
+        this.gasTipo = gasTipo;
     }
 
     @Temporal(TemporalType.DATE)
@@ -65,13 +95,13 @@ public class GasCompra  implements java.io.Serializable {
     }
 
     
-    @Column(name="gas_valor_total")
-    public int getGasValorTotal() {
-        return this.gasValorTotal;
+    @Column(name="gas_total", precision=10)
+    public double getGasTotal() {
+        return this.gasTotal;
     }
     
-    public void setGasValorTotal(int gasValorTotal) {
-        this.gasValorTotal = gasValorTotal;
+    public void setGasTotal(double gasTotal) {
+        this.gasTotal = gasTotal;
     }
 
     
@@ -84,15 +114,6 @@ public class GasCompra  implements java.io.Serializable {
         this.gasFormaDePagamento = gasFormaDePagamento;
     }
 
-    
-    @Column(name="gas_numero_da_fatura")
-    public int getGasNumeroDaFatura() {
-        return this.gasNumeroDaFatura;
-    }
-    
-    public void setGasNumeroDaFatura(int gasNumeroDaFatura) {
-        this.gasNumeroDaFatura = gasNumeroDaFatura;
-    }
 
 
 

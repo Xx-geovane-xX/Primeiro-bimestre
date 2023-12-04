@@ -32,7 +32,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
     public JDlgUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("cadastro cliente");
+        setTitle("cadastro Usuario");
         setLocationRelativeTo(null);
         gasUsuarios = new GasUsuarios();
         usuariosDAO = new UsuariosDAO();

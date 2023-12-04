@@ -46,11 +46,11 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_geovane_silva?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">geovane_silva</property>
     <property name="hibernate.connection.password">geovane_silva</property>
+    <mapping class="bean.GasProduto"/>
+    <mapping class="bean.GasTipo"/>
     <mapping class="bean.GasFornecedor"/>
     <mapping class="bean.GasCompraProduto"/>
     <mapping class="bean.GasUsuarios"/>
     <mapping class="bean.GasCompra"/>
-    <mapping class="bean.GasTipo"/>
-    <mapping class="bean.GasProduto"/>
   </session-factory>
 </hibernate-configuration>

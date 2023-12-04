@@ -1,10 +1,13 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,16 +26,25 @@ public class GasCompraProduto  implements java.io.Serializable {
      private int gasIdcompraProduto;
      private GasCompra gasCompra;
      private GasProduto gasProduto;
+     private double gasValorUnitario;
+     private int gasQuantidade;
 
-  
+    public GasCompraProduto() {
+    }
 
-    public GasCompraProduto(int gasIdcompraProduto, GasCompra gasCompra, GasProduto gasProduto) {
-       this.gasIdcompraProduto = gasIdcompraProduto;
+	
+    public GasCompraProduto(GasCompra gasCompra, GasProduto gasProduto) {
+        this.gasCompra = gasCompra;
+        this.gasProduto = gasProduto;
+    }
+    public GasCompraProduto(GasCompra gasCompra, GasProduto gasProduto, double gasValorUnitario, int gasQuantidade) {
        this.gasCompra = gasCompra;
        this.gasProduto = gasProduto;
+       this.gasValorUnitario = gasValorUnitario;
+       this.gasQuantidade = gasQuantidade;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="gas_idcompra_produto", unique=true, nullable=false)
@@ -45,7 +57,7 @@ public class GasCompraProduto  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="gas_compra_id_produto", nullable=false)
+    @JoinColumn(name="gas_fk_compra_produtol", nullable=false)
     public GasCompra getGasCompra() {
         return this.gasCompra;
     }
@@ -55,13 +67,33 @@ public class GasCompraProduto  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="gas_produto_id_compra", nullable=false)
+    @JoinColumn(name="gas_fk_produto_compra", nullable=false)
     public GasProduto getGasProduto() {
         return this.gasProduto;
     }
     
     public void setGasProduto(GasProduto gasProduto) {
         this.gasProduto = gasProduto;
+    }
+
+    
+    @Column(name="gas_valor_unitario", precision=10)
+    public double getGasValorUnitario() {
+        return this.gasValorUnitario;
+    }
+    
+    public void setGasValorUnitario(double gasValorUnitario) {
+        this.gasValorUnitario = gasValorUnitario;
+    }
+
+    
+    @Column(name="gas_quantidade")
+    public int getGasQuantidade() {
+        return this.gasQuantidade;
+    }
+    
+    public void setGasQuantidade(int gasQuantidade) {
+        this.gasQuantidade = gasQuantidade;
     }
 
 

@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "gas_tipo",
-         catalog = "db_geovane_silva"
+        catalog = "db_geovane_silva"
 )
 public class GasTipo implements java.io.Serializable {
 
@@ -29,7 +29,11 @@ public class GasTipo implements java.io.Serializable {
     public GasTipo() {
     }
 
-    public GasTipo(int gasIdTipo, String gasNome, String gasDescricao, int gasPrecoMedio, String gasUnidadeDeMedida, int gasPeso) {
+    public GasTipo(int gasIdTipo) {
+        this.gasIdTipo = gasIdTipo;
+    }
+
+    public GasTipo(int gasIdTipo, String gasNome, String gasDescricao, int gasPrecoMedio, String gasUnidadeDeMedida, int gasPeso, Set gasCompras, Set gasProdutos) {
         this.gasIdTipo = gasIdTipo;
         this.gasNome = gasNome;
         this.gasDescricao = gasDescricao;
@@ -93,8 +97,8 @@ public class GasTipo implements java.io.Serializable {
     public void setGasPeso(int gasPeso) {
         this.gasPeso = gasPeso;
     }
-    
-    @Override
+
+      @Override
     public String toString() {
         return getGasNome();
     }
@@ -107,4 +111,5 @@ public class GasTipo implements java.io.Serializable {
         }
         return false;
     }
+    
 }

@@ -13,8 +13,9 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author geova
  */
-public class CompraControle extends AbstractTableModel{
-      private List lista;
+public class CompraControle extends AbstractTableModel {
+
+    private List lista;
 
     public void setList(List lista) {
         this.lista = lista;
@@ -33,28 +34,30 @@ public class CompraControle extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         GasCompra gasCompra = (GasCompra) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return gasCompra.getGasIdcompra();
+            return gasCompra.getGasIdCompra();
         }
         if (columnIndex == 1) {
-            return gasCompra.getGasFormaDePagamento();
+            return gasCompra.getGasFornecedor();
         }
         if (columnIndex == 2) {
-            return gasCompra.getGasValorTotal();
+            return gasCompra.getGasTipo();
         }
         if (columnIndex == 3) {
             return gasCompra.getGasDataCompra();
         }
         if (columnIndex == 4) {
-            return gasCompra.getGasNumeroDaFatura();
+            return gasCompra.getGasTotal();
         }
-        
+        if (columnIndex == 5) {
+            return gasCompra.getGasFormaDePagamento();
+        }
 
         return "";
     }
@@ -65,19 +68,24 @@ public class CompraControle extends AbstractTableModel{
             return "ID";
         }
         if (columnIndex == 1) {
-            return "Forma de Pagamento";
+            return "Fornecedor";
         }
         if (columnIndex == 2) {
-            return "Valor Total";
+            return "Tipo";
         }
         if (columnIndex == 3) {
             return "Data da Compra";
         }
         if (columnIndex == 4) {
-            return "Numero da Fatura";
+            return "Total";
+        }
+        if (columnIndex == 4) {
+            return "Total";
+        }
+        if (columnIndex == 5) {
+            return "Pagamento";
         }
         return "";
     }
 
-    
 }

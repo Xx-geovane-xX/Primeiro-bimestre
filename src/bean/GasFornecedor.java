@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "gas_fornecedor",
-        catalog = "db_geovane_silva"
+         catalog = "db_geovane_silva"
 )
 public class GasFornecedor implements java.io.Serializable {
 
@@ -39,6 +39,10 @@ public class GasFornecedor implements java.io.Serializable {
     private String gasCnpj;
 
     public GasFornecedor() {
+    }
+
+    public GasFornecedor(int gasIdfornecedor) {
+        this.gasIdfornecedor = gasIdfornecedor;
     }
 
     public GasFornecedor(int gasIdfornecedor, String gasNome, String gasCidade, String gasCpf, String gasRg, String gasApelido, Date gasDataNascimento, String gasSexo, String gasEmail, String gasEstado, Date gasDataCadastro, String gasIdade, String gasCep, String gasTelefone, String gasCnpj) {
@@ -202,6 +206,7 @@ public class GasFornecedor implements java.io.Serializable {
     public String toString() {
         return getGasNome();
     }
+
     public boolean equals(Object object) {
         if (object instanceof GasFornecedor) {
             GasFornecedor gasFornecedor = (GasFornecedor) object;

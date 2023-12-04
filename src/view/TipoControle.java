@@ -47,7 +47,7 @@ public class TipoControle extends AbstractTableModel {
             return GasTipo.getGasNome();
         } 
         if (column == 2){
-            return GasTipo.getGasDescricao();
+            return GasTipo.getGasPrecoMedio();
         }
         if (column == 3){
             return GasTipo.getGasPeso();
@@ -64,7 +64,7 @@ public class TipoControle extends AbstractTableModel {
          return "Nome";
     }
      if (column == 2 )   {
-         return "descrição";
+         return "Preço Medio";
     }
      if (column == 3 )   {
          return "peso";

@@ -47,6 +47,9 @@ public class CompraDAO extends DAO_Abstract{
         criteria.add(Restrictions.eq("gasIdcompra", id));
         List Lista = criteria.list();
         session.getTransaction().commit();
+        
+        
+        
         return Lista.get(0);
     }
 
@@ -68,23 +71,36 @@ public class CompraDAO extends DAO_Abstract{
         return Lista;
     }
 
-    public List listValorTotalFormaDePagamento(int valor, String formaDePagamento) {
+    public List listValorTotalFormaDePagamento(double total, String formaDePagamento) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(GasCompra.class);
-        criteria.add(Restrictions.le("gasValorTotal", valor ));
+        criteria.add(Restrictions.le("gasTotal", total ));
         criteria.add(Restrictions.like("gasFormaDePagamento", "%" + formaDePagamento + "%"));
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista;
     }
 
-    public List listValorTotal(int valor) {
+    public List listTotal(double total) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(GasCompra.class);
-        criteria.add(Restrictions.le("gasValorTotal", valor));
+        criteria.add(Restrictions.le("gasTotal", total));
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista;
+    }
+    
+
+    public Object Buscar(int id) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(GasCompra.class);
+        criteria.add(Restrictions.like("gasIdcompra", id));
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        if (!Lista.isEmpty()) {
+            return Lista.get(0);
+        }
+        return null;
     }
 
 }

@@ -50,7 +50,7 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTxtValor2 = new javax.swing.JTextField();
+        jTxtTotal = new javax.swing.JTextField();
         jBtnConsultar = new javax.swing.JButton();
         jTxtFormaPagamento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -74,9 +74,9 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
 
         jLabel3.setText("Forma de Pagamento");
 
-        jTxtValor2.addActionListener(new java.awt.event.ActionListener() {
+        jTxtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtValor2ActionPerformed(evt);
+                jTxtTotalActionPerformed(evt);
             }
         });
 
@@ -87,7 +87,7 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
             }
         });
 
-        jLabel4.setText("valor");
+        jLabel4.setText("total");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -103,7 +103,7 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jTxtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -121,7 +121,7 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTxtValor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -143,24 +143,24 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTxtValor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtValor2ActionPerformed
+    private void jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtValor2ActionPerformed
+    }//GEN-LAST:event_jTxtTotalActionPerformed
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
 
         List lista;
-        if (jTxtValor2.getText().equals("") && jTxtFormaPagamento.getText().equals("")) {
+        if (jTxtTotal.getText().equals("") && jTxtFormaPagamento.getText().equals("")) {
             lista = compraDAO.listALL();
         }else {
-            if (!jTxtValor2.getText().equals("") && !jTxtFormaPagamento.getText().equals("")) {
-                lista = compraDAO.listValorTotalFormaDePagamento(Util.strInt(jTxtValor2.getText()), jTxtFormaPagamento.getText());
+            if (!jTxtTotal.getText().equals("") && !jTxtFormaPagamento.getText().equals("")) {
+                lista = compraDAO.listValorTotalFormaDePagamento(Util.strDouble(jTxtTotal.getText()), jTxtFormaPagamento.getText());
             }else {
                 if (!jTxtFormaPagamento.getText().equals("")) {
                     lista = compraDAO.listFormaDePagamento(jTxtFormaPagamento.getText());
                 }else {
-                    lista = compraDAO.listValorTotal(Util.strInt(jTxtValor2.getText()) );
+                    lista = compraDAO.listTotal(Util.strDouble(jTxtTotal.getText()) );
                 }
             }
         }
@@ -211,18 +211,12 @@ public class JDlgConsultasCompra extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnConsultar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTxtFormaPagamento;
-    private javax.swing.JTextField jTxtValor;
-    private javax.swing.JTextField jTxtValor1;
-    private javax.swing.JTextField jTxtValor2;
+    private javax.swing.JTextField jTxtTotal;
     // End of variables declaration//GEN-END:variables
 }

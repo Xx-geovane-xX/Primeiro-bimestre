@@ -85,6 +85,12 @@ public class JDlgConsultasTipo extends javax.swing.JDialog {
             }
         });
 
+        jTxtPrecoMedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtPrecoMedioActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("peso");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -164,6 +170,10 @@ public class JDlgConsultasTipo extends javax.swing.JDialog {
         }
         tipoControle.setLista(lista);
     }//GEN-LAST:event_jBtnConsultarActionPerformed
+
+    private void jTxtPrecoMedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPrecoMedioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtPrecoMedioActionPerformed
 
     /**
      * @param args the command line arguments

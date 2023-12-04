@@ -70,7 +70,12 @@ public class Util {
     public static String intStr(int num) {
         return String.valueOf(num);
     }
+    
+    public static double intDouble(int num){
+        return Double.valueOf(num);
+    }
 
+    
     public static double strDouble(String cad) {
         return Double.valueOf(cad);
     }

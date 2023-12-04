@@ -84,7 +84,7 @@ public class JDlgConsultasFornecedor extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Forma de pagamento");
+        jLabel2.setText("Apelido");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

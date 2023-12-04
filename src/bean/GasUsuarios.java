@@ -1,5 +1,5 @@
 package bean;
-// Generated 20/11/2023 16:14:59 by Hibernate Tools 4.3.1
+// Generated 04/12/2023 10:11:15 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -33,8 +33,10 @@ public class GasUsuarios  implements java.io.Serializable {
     }
 
 	
-  
-    public GasUsuarios(int gasIdusuarios, String gasApelido, String gasNome, Date gasDataNasc, String gasSenha, Integer gasNivel, String gasAtivo, String gasCpf) {
+    public GasUsuarios(int gasIdusuarios) {
+        this.gasIdusuarios = gasIdusuarios;
+    }
+    public GasUsuarios(int gasIdusuarios, String gasApelido, String gasNome, Date gasDataNasc, String gasSenha, int gasNivel, String gasAtivo, String gasCpf) {
        this.gasIdusuarios = gasIdusuarios;
        this.gasApelido = gasApelido;
        this.gasNome = gasNome;
