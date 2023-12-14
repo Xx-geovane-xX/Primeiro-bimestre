@@ -91,7 +91,7 @@ public class CompraProdutosControler extends AbstractTableModel {
         }
         if (columnIndex == 3) {
             return "Valor total";
-        }
+        } 
         return "";
     }
 

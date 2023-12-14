@@ -35,14 +35,18 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         produtoControle = new ProdutoControle();
         produtoDAO = new ProdutoDAO();
         gasProduto = new GasProduto();
-        jTable1.setModel(produtoControle);
-        carregar();
-    }
-
-    public void carregar() {
         List lista = produtoDAO.listALL();
-        produtoControle.setLista(lista);
+        carregar(lista);
     }
+    
+    public void carregar(List lista) {
+        System.out.println("Comecou o AT");
+        produtoControle.setLista(lista);
+        jTable1.setModel(produtoControle);
+        System.out.println("Terminou o AT");
+    }
+    
+        
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -129,7 +133,6 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         jDlgProdutoNovoIA.setTitle("Inclusão");
         jDlgProdutoNovoIA.setTelaAnterior(this);
         jDlgProdutoNovoIA.setVisible(true);
-        carregar();
 
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -142,7 +145,6 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         jDlgProdutoNovoIA.setTitle("Alteração");
         jDlgProdutoNovoIA.setTelaAnterior(this);
         jDlgProdutoNovoIA.setVisible(true);
-        carregar();
 
 
     }//GEN-LAST:event_jBtnAlterarActionPerformed
@@ -154,7 +156,8 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
             gasProduto = produtoControle.getBean(sel);
             produtoDAO.delete(gasProduto);
             //atualizar a lista no jtable
-            carregar();
+            List lista = produtoDAO.listALL();
+            carregar(lista);
         } else {
             Util.mensagem("Exclusão cancelada.");
         }

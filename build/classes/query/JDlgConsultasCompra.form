@@ -82,7 +82,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTxtValor2" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
+                              <Component id="jTxtTotal" alignment="0" min="-2" pref="317" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -107,7 +107,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTxtValor2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTxtTotal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="21" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -119,9 +119,9 @@
             <Property name="text" type="java.lang.String" value="Forma de Pagamento"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTxtValor2">
+        <Component class="javax.swing.JTextField" name="jTxtTotal">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtValor2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtTotalActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBtnConsultar">
@@ -136,7 +136,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="valor"/>
+            <Property name="text" type="java.lang.String" value="total"/>
           </Properties>
         </Component>
       </SubComponents>

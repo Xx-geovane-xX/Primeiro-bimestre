@@ -399,12 +399,12 @@ public class JDlgCompra extends javax.swing.JDialog {
         } else {
             compraDAO.update(gasCompra);
             GasCompraProduto gasCompraProduto;
-
+            Object object = compraDAO.Buscar(Util.strInt(jTxtCodigo.getText()));
+            compraProdutoDAO.deletefk((GasCompra) object);
             //  Object buscar = compraDAO.Buscar(Util.strInt(jTxtCodigo.getText()));
-            //    Object fk =  Util.strInt(jTxtCodigo.getText());
-           // int fk = Util.strInt(jTxtCodigo.getText());
-           // compraProdutoDAO.deleteFk(fk);
-
+            //  Object fk =  Util.strInt(jTxtCodigo.getText());
+            // int fk = Util.strInt(jTxtCodigo.getText());
+            // compraProdutoDAO.deleteFk(fk);
 //remover todos os pedidos produtos deste pedido
             // jTable.setModel(compraProdutosControler);
             //incluir todos os pedidosProduto que estao no jtable
@@ -426,17 +426,23 @@ public class JDlgCompra extends javax.swing.JDialog {
         if (gasCompra != null) {
             if (Util.pergunta("Deseja excluir o pedido ?") == true) {
                 compraProdutoDAO = new CompraProdutoDAO();
-                GasCompraProduto gasCompraProduto;
-                for (int linha = 0; linha < jTable.getRowCount(); linha++) {
-                    gasCompraProduto = compraProdutosControler.getbean(linha);
-                    compraProdutoDAO.delete(gasCompraProduto);
-                }
+            //    GasCompraProduto gasCompraProduto;
+                Object object = compraDAO.Buscar(Util.strInt(jTxtCodigo.getText()));
+                compraProdutoDAO.deletefk((GasCompra) object);
+                // for (int linha = 0; linha < jTable.getRowCount(); linha++) {
+                //   gasCompraProduto = compraProdutosControler.getbean(linha);
+                // compraProdutoDAO.delete(gasCompraProduto);
+                //  }
+                gasCompra = viewBean();
                 compraDAO.delete(gasCompra);
             }
         } else {
             Util.mensagem("Deve ser realizada uma pesquisa antes");
         }
         Util.limparCampos(jTxtCodigo, jFmtDataCompra, jCboFornecedor, jCboTipo, jTxtTotal, jTxtFormaDePagamento);
+        List lista = new ArrayList();
+        compraProdutosControler.setList(lista);
+        jTable.setModel(compraProdutosControler);
         gasCompra = null;
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

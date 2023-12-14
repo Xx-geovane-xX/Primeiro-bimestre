@@ -44,7 +44,7 @@ public class CompraDAO extends DAO_Abstract{
     public Object list(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(GasCompra.class);
-        criteria.add(Restrictions.eq("gasIdcompra", id));
+        criteria.add(Restrictions.eq("gasIdCompra", id));
         List Lista = criteria.list();
         session.getTransaction().commit();
         
@@ -94,13 +94,16 @@ public class CompraDAO extends DAO_Abstract{
     public Object Buscar(int id) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(GasCompra.class);
-        criteria.add(Restrictions.like("gasIdcompra", id));
-        List Lista = criteria.list();
+        criteria.add(Restrictions.like("gasIdCompra", id));
+        List lista = criteria.list();
         session.getTransaction().commit();
-        if (!Lista.isEmpty()) {
-            return Lista.get(0);
+        if (!lista.isEmpty()) {
+            return lista.get(0);
         }
         return null;
     }
-
+    public static void main(String[] args) {
+        CompraDAO cdao = new CompraDAO();
+        System.err.println(cdao.Buscar(7));
+    }
 }

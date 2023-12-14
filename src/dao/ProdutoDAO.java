@@ -24,11 +24,13 @@ public class ProdutoDAO extends DAO_Abstract{
 
     @Override 
     public void update(Object object) {
+        System.out.println("Comecou o UP");
        session.beginTransaction();
         session.flush();
        session.clear();
        session.update(object);
        session.getTransaction().commit();
+        System.out.println("Terminou o UP");
     }
 
     @Override

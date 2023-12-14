@@ -8,6 +8,9 @@ package view;
 import bean.GasTipo;
 import dao.ProdutoDAO;
 import dao.TipoDAO;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Util;
 
 /**
@@ -57,6 +60,26 @@ public class JDlgTipoNovoIA extends javax.swing.JDialog {
     public void setTelaAnterior(JDlgTipoNovo jDlgTipoNovo) {
         this.jDlgTipoNovo = jDlgTipoNovo;
     }
+
+  /*  public void atualizar() throws InterruptedException {
+        long start = System.currentTimeMillis();
+        gasTipo = viewBean();
+        if (incluindo == true) {
+            tipoDAO.insert(gasTipo);
+             List lista = tipoDAO.listALL();
+            jDlgTipoNovo.carregar(lista);
+        } else {
+            tipoDAO.update(gasTipo);
+            List lista = tipoDAO.listALL();
+            jDlgTipoNovo.carregar(lista);
+        }
+         Util.limparCampos(jTxtCodigo, jTxtNome, jTxtPeso, jTxtPrecoMedio, jTxtUnidadeDeMedida, jTxtDescricao);
+        gasTipo = new GasTipo();
+        long end = System.currentTimeMillis();
+        double total = (end - start) / 1000.0;
+        System.out.println("tempo: " + total + "segundos");
+
+    } */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -222,21 +245,23 @@ public class JDlgTipoNovoIA extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
-        //JDlgTipoNovo jDlgTipoNovo = new JDlgTipoNovo(null, true);
         gasTipo = viewBean();
         if (incluindo == true) {
             tipoDAO.insert(gasTipo);
-            jDlgTipoNovo.carregar();
+             List lista = tipoDAO.listALL();
+            jDlgTipoNovo.carregar(lista);
         } else {
             tipoDAO.update(gasTipo);
-            jDlgTipoNovo.carregar();
+            List lista = tipoDAO.listALL();
+            jDlgTipoNovo.carregar(lista);
         }
+         Util.limparCampos(jTxtCodigo, jTxtNome, jTxtPeso, jTxtPrecoMedio, jTxtUnidadeDeMedida, jTxtDescricao);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
+         Util.limparCampos(jTxtCodigo, jTxtNome, jTxtPeso, jTxtPrecoMedio, jTxtUnidadeDeMedida, jTxtDescricao);
         this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 

@@ -7,6 +7,7 @@ package view;
 
 import bean.GasTipo;
 import dao.TipoDAO;
+import java.util.ArrayList;
 import java.util.List;
 import tools.Util;
 
@@ -33,14 +34,15 @@ public class JDlgTipoNovo extends javax.swing.JDialog {
         gasTipo = new GasTipo();
         tipoControle = new TipoControle();
         tipoDAO = new TipoDAO();
-        carregar();
-        jTable1.setModel(tipoControle);
+          List lista = tipoDAO.listALL();
+        carregar(lista);
     }
 
-    //metodo de atualizar a lista
-    public void carregar() {
-        List lista = tipoDAO.listALL();
+    public void carregar(List lista) {
+        System.out.println("comecou o AT");
         tipoControle.setLista(lista);
+        jTable1.setModel(tipoControle);
+        System.out.println("terminou o AT");
     }
 
     /**
@@ -131,7 +133,7 @@ public class JDlgTipoNovo extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         jDlgTipoNovoIA.incluindo = false;
         int rowSel = jTable1.getSelectedRow();
         gasTipo = tipoControle.getBean(rowSel);
@@ -147,7 +149,8 @@ public class JDlgTipoNovo extends javax.swing.JDialog {
             int sel = jTable1.getSelectedRow();
             gasTipo = tipoControle.getBean(sel);
             tipoDAO.delete(gasTipo);
-            carregar();
+            List lista = tipoDAO.listALL();
+            carregar(lista);
         } else {
             Util.mensagem("Exclusão cancelada.");
         }

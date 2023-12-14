@@ -28,14 +28,19 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        GasProduto gasProduto = new GasProduto();
         produtoDAO = new ProdutoDAO();
         List lista = (List) produtoDAO.listALL();
         for (Object item : lista) {
-            jCboProduto.addItem((GasProduto)item);
+            jCboProduto.addItem((GasProduto) item);
+            // jCboFornecedor.setSelectedItem(gasCompra.getGasFornecedor());
         }
+
+        
+        Util.habilitar(false, jTxtTotal, jTxtVarlorUni);
     }
-    
-      public void setTelaAnterior(JDlgCompra jDlgCompra) {
+
+    public void setTelaAnterior(JDlgCompra jDlgCompra) {
         this.jDlgCompra = jDlgCompra;
 //        this.numVendaId = numVendaId;
     }
@@ -75,6 +80,11 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
                 jTxtVarlorUniActionPerformed(evt);
             }
         });
+        jTxtVarlorUni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTxtVarlorUniKeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("Vaolor unitario");
 
@@ -97,9 +107,22 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
             }
         });
 
+        jCboProduto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCboProdutoItemStateChanged(evt);
+            }
+        });
         jCboProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboProdutoActionPerformed(evt);
+            }
+        });
+        jCboProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jCboProdutoKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jCboProdutoKeyTyped(evt);
             }
         });
 
@@ -184,6 +207,7 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
 
     private void jTxtVarlorUniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtVarlorUniActionPerformed
         // TODO add your handling code here:
+      
     }//GEN-LAST:event_jTxtVarlorUniActionPerformed
 
     private void jTxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTotalActionPerformed
@@ -192,17 +216,19 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
 
     private void jTxtQuantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtQuantActionPerformed
         // TODO add your handling code here:
-        if (jTxtQuant.getText().isEmpty() == false) {
+     
+    }//GEN-LAST:event_jTxtQuantActionPerformed
+
+    private void jTxtQuantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantKeyReleased
+
+           if (jTxtQuant.getText().isEmpty() == false) {
             double unitario = Util.strDouble(jTxtVarlorUni.getText());
             double quantidade = Util.strDouble(jTxtQuant.getText());
             jTxtTotal.setText(String.valueOf(quantidade * unitario));
         } else {
             jTxtTotal.setText("0");
         }
-    }//GEN-LAST:event_jTxtQuantActionPerformed
-
-    private void jTxtQuantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtQuantKeyReleased
-
+        
     }//GEN-LAST:event_jTxtQuantKeyReleased
 
     private void jCboProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboProdutoActionPerformed
@@ -211,13 +237,13 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-   GasCompraProduto gasCompraProduto = new GasCompraProduto();
-        gasCompraProduto.setGasProduto((GasProduto) jCboProduto.getSelectedItem() );
-        gasCompraProduto.setGasQuantidade(Util.strInt(jTxtQuant.getText() ));
+        GasCompraProduto gasCompraProduto = new GasCompraProduto();
+        gasCompraProduto.setGasProduto((GasProduto) jCboProduto.getSelectedItem());
+        gasCompraProduto.setGasQuantidade(Util.strInt(jTxtQuant.getText()));
         gasCompraProduto.setGasValorUnitario(Util.strDouble(jTxtVarlorUni.getText()));
         if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
-           jDlgCompra.compraProdutosControler.addBean(gasCompraProduto);
-        } else {            
+            jDlgCompra.compraProdutosControler.addBean(gasCompraProduto);
+        } else {
             jDlgCompra.compraProdutosControler.updateBean(jDlgCompra.getSelectedRowProd(), gasCompraProduto);
         }
         setVisible(false);
@@ -227,6 +253,25 @@ public class JDlgCompraProdutosIA extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
+
+    private void jTxtVarlorUniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTxtVarlorUniKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtVarlorUniKeyPressed
+
+    private void jCboProdutoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCboProdutoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboProdutoKeyReleased
+
+    private void jCboProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jCboProdutoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCboProdutoKeyTyped
+
+    private void jCboProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCboProdutoItemStateChanged
+        // TODO add your handling code here:
+        jTxtQuant.setText( "1" );
+        GasProduto gasProduto = (GasProduto) jCboProduto.getSelectedItem();
+        jTxtVarlorUni.setText( Util.doubleStr( gasProduto.getGasValor() ));
+    }//GEN-LAST:event_jCboProdutoItemStateChanged
 
     /**
      * @param args the command line arguments

@@ -25,11 +25,13 @@ public class TipoDAO extends DAO_Abstract{
 
     @Override 
     public void update(Object object) {
+        System.out.println("comecou o UP");
        session.beginTransaction();
         session.flush();
        session.clear();
        session.update(object);
        session.getTransaction().commit();
+        System.out.println("terminou o UP");
        
     }
 

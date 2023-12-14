@@ -43,18 +43,17 @@ public class CompraProdutoDAO extends DAO_Abstract {
         session.getTransaction().commit();
     }
 
-   // public void deleteFk(int fk) {
-     //   session.beginTransaction();
-      //  Criteria criteria = session.createCriteria(GasCompraProduto.class);
-      //  criteria.add(Restrictions.like("gasCompra", fk));
-      //  List lista = criteria.list();
-       // for (int i = 0; i < lista.size(); i++) {;
-          //  Object object = lista.get(i);
-       //     session.delete(lista);
-       //}
-     //   session.getTransaction().commit();
-  //  }
-
+    // public void deleteFk(int fk) {
+    //   session.beginTransaction();
+    //  Criteria criteria = session.createCriteria(GasCompraProduto.class);
+    //  criteria.add(Restrictions.like("gasCompra", fk));
+    //  List lista = criteria.list();
+    // for (int i = 0; i < lista.size(); i++) {;
+    //  Object object = lista.get(i);
+    //     session.delete(lista);
+    //}
+    //   session.getTransaction().commit();
+    //  }
 //    public void deleteFk(int fk) {
 //       session.beginTransaction();
 //       session.flush();
@@ -96,6 +95,33 @@ public class CompraProdutoDAO extends DAO_Abstract {
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista;
+    }
+    
+      public Object BuscarFk(int fk) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(GasCompra.class);
+        criteria.add(Restrictions.like("gasCompra", fk));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        if (!lista.isEmpty()) {
+            return lista.get(0);
+        }
+        return null;
+    }
+
+    public void deletefk(GasCompra fk) {
+        session.beginTransaction();
+        session.flush();
+        session.clear();
+        Criteria criteria = session.createCriteria(GasCompraProduto.class);
+        criteria.add(Restrictions.eq("gasCompra", fk));
+        List list = criteria.list();
+        for (int i = 0; i < list.size(); i++) {
+            Object get = list.get(i);
+            session.delete(get);
+        }
+
+        session.getTransaction().commit();
     }
 
 }

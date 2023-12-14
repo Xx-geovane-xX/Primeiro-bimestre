@@ -12,6 +12,9 @@ import dao.FornecedorDAO;
 import dao.ProdutoDAO;
 import dao.TipoDAO;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Util;
 
 /**
@@ -70,10 +73,10 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
         jFmtValor.setText(Util.intStr(gasProduto.getGasValor()));
     }
 
-      public void setTelaAnterior(JDlgProdutoNovo jDlgProdutoNovo) {
+    public void setTelaAnterior(JDlgProdutoNovo jDlgProdutoNovo) {
         this.jDlgProdutoNovo = jDlgProdutoNovo;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,22 +228,24 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
-        // TODO add your handling code here:
         gasProduto = viewBean();
         if (incluindo == true) {
             produtoDAO.insert(gasProduto);
-            jDlgProdutoNovo.carregar();
+            List lista = produtoDAO.listALL();
+            jDlgProdutoNovo.carregar(lista);
         } else {
             produtoDAO.update(gasProduto);
-            jDlgProdutoNovo.carregar();
+            List lista = produtoDAO.listALL();
+            jDlgProdutoNovo.carregar(lista);
         }
+        Util.limparCampos(jTxtCodigo, jTxtNome, jFmtValor);
         setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-
+        Util.limparCampos(jTxtCodigo, jTxtNome, jFmtValor);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jFmtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtValorActionPerformed

@@ -41,10 +41,10 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_geovane_silva"/>
-  <table-filter match-name="gas_produto"/>
-  <table-filter match-name="gas_tipo"/>
-  <table-filter match-name="gas_compra"/>
-  <table-filter match-name="gas_usuarios"/>
-  <table-filter match-name="gas_compra_produto"/>
   <table-filter match-name="gas_fornecedor"/>
+  <table-filter match-name="gas_compra"/>
+  <table-filter match-name="gas_compra_produto"/>
+  <table-filter match-name="gas_tipo"/>
+  <table-filter match-name="gas_produto"/>
+  <table-filter match-name="gas_usuarios"/>
 </hibernate-reverse-engineering>

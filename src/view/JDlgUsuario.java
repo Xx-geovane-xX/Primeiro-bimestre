@@ -376,6 +376,8 @@ public class JDlgUsuario extends javax.swing.JDialog {
         } else {
             usuariosDAO.update(gasUsuarios);
         }
+        gasUsuarios = new GasUsuarios();
+        Util.limparCampos(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtCpf, jFmtData);
         Util.habilitar(false, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtCpf, jFmtData, jBtnCancelar, jBtnConfirmar, jPwfSenha);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
